@@ -15,9 +15,9 @@ fi
 USER_PROMPT="$USERCOLORED%{$fg[white]%}$(instanceid)%{$fg[cyan]%}|%{$reset_color%}"
 
 if [ "$(environmentuc)" != "PROD" ]; then
-    ENV_PROMPT="%{$bg[blue]%}%{$fg_bold[black]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
+    ENV_PROMPT="%{$fg_bold[blue]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
 else
-    ENV_PROMPT="%{$bg[red]%}%{$fg_bold[black]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
+    ENV_PROMPT="%{$fg_bold[red]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
 fi
 
 ROLE_PROMPT="%{$fg[green]%}$(mainroles)%{$fg[cyan]%}|%{$reset_color%}"
