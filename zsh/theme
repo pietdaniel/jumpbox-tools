@@ -12,7 +12,7 @@ else
     USERCOLORED="%{$fg[red]%}%n%{$fg[yellow]%}@"
 fi
 
-USER_PROMPT="$USERCOLORED%{$fg[white]%}$(instanceid)%{$fg[cyan]%}|%{$reset_color%}"
+USER_PROMPT="$USERCOLORED%{$fg[cyan]%}$(instanceid)%{$fg[cyan]%}|%{$reset_color%}"
 
 if [ "$(environmentuc)" != "PROD" ]; then
     ENV_PROMPT="%{$fg_bold[blue]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
@@ -21,13 +21,14 @@ else
 fi
 
 ROLE_PROMPT="%{$fg[green]%}$(mainroles)%{$fg[cyan]%}|%{$reset_color%}"
+TAG_PROMPT="%{$fg[magenta]%}$(maintags)%{$fg[cyan]%}|%{$reset_color%}"
 
 TIME_PROMPT="%{$fg[yellow]%}%D{"%H:%M:%S"}%{$fg[cyan]%}|%{$reset_color%}"
 CWD_PROMPT="%~"
 
 SNDLINEPREFIX="%{$fg[green]%}λ%{$reset_color%}"
 
-PROMPT=$'$FSTLINEPREFIX$USER_PROMPT$ENV_PROMPT$ROLE_PROMPT$TIME_PROMPT $CWD_PROMPT
+PROMPT=$'$FSTLINEPREFIX$USER_PROMPT$ENV_PROMPT$ROLE_PROMPT$TAG_PROMPT$TIME_PROMPT $CWD_PROMPT
 $SNDLINEPREFIX '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
