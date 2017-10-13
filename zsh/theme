@@ -4,31 +4,31 @@
 
 RPROMPT='%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%}'
 
-FSTLINEPREFIX="%{$fg[cyan]%}┌─%{$reset_color%}"
+FSTLINEPREFIX="%{$fg[cyan]%}%{$reset_color%}"
 
 if [ "`id -u`" -ne 0 ]; then
-    USERCOLORED="%{$fg[red]%}%n"
+    USERCOLORED=""
 else
-    USERCOLORED="%{$fg[blue]%}%n"
+    USERCOLORED="%{$fg[red]%}%n%{$fg[yellow]%}@"
 fi
 
-USER_PROMPT="%{$fg[cyan]%}[$USERCOLORED%{$fg[yellow]%}@%{$fg[white]%}$(instanceid)%{$fg[cyan]%}]%{$reset_color%}"
+USER_PROMPT="$USERCOLORED%{$fg[white]%}$(instanceid)%{$fg[cyan]%}|%{$reset_color%}"
 
 if [ "$(environmentuc)" != "PROD" ]; then
-    ENV_PROMPT="%{$fg[cyan]%}[%{$bg[white]%}%{$fg_bold[black]%}$(environmentuc)%k%b%{$fg[cyan]%}]%{$reset_color%}"
+    ENV_PROMPT="%{$bg[blue]%}%{$fg_bold[black]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
 else
-    ENV_PROMPT="%{$fg[cyan]%}[%{$bg[red]%}%{$fg_bold[white]%}$(environmentuc)%k%b%{$fg[cyan]%}]%{$reset_color%}"
+    ENV_PROMPT="%{$bg[red]%}%{$fg_bold[black]%}$(environmentuc)%k%b%{$fg[cyan]%}|%{$reset_color%}"
 fi
 
-ROLE_PROMPT="%{$fg[cyan]%}[%{$fg[green]%}$(mainroles)%{$fg[cyan]%}]%{$reset_color%}"
+ROLE_PROMPT="%{$fg[green]%}$(mainroles)%{$fg[cyan]%}|%{$reset_color%}"
 
-TIME_PROMPT="%{$fg[cyan]%}[%{$fg[yellow]%}%D{"%H:%M:%S"}%{$fg[cyan]%}]%{$reset_color%}"
+TIME_PROMPT="%{$fg[yellow]%}%D{"%H:%M:%S"}%{$fg[cyan]%}|%{$reset_color%}"
 CWD_PROMPT="%~"
 
-SNDLINEPREFIX="%{$fg[cyan]%}└─$%{$reset_color%}"
+SNDLINEPREFIX="%{$fg[green]%}λ%{$reset_color%}"
 
 PROMPT=$'$FSTLINEPREFIX$USER_PROMPT$ENV_PROMPT$ROLE_PROMPT$TIME_PROMPT $CWD_PROMPT
-$SNDLINEPREFIX  '
+$SNDLINEPREFIX '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
