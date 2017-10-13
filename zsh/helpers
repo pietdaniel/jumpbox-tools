@@ -21,7 +21,7 @@ maintags() {
     tail -n+5 |\
     grep -vE '^Instance Type:|^\*\*|^$' |\
     grep -Ev 'common-node|monitoring-client|dog-base|encrypted-storage' |\
-    sed '/Tags:/,$p' |\
+    sed -n '/Tags:/,$p' |\
     grep -v "Tags:" |\
     paste -d',' -s -
 
