@@ -46,9 +46,16 @@ jr(){
     ssh -A $IP
 }
 
+prefix_with_i() {
+}
+
 ji(){
-    deploytools $1
-    ssh -A $1
+    _node_to_use=$1
+    if [[ "$1" =~ ^i- ]]; then
+        _node_to_use="i-$1"
+    fi
+    deploytools $_node_to_use
+    ssh -A $_node_to_use
 }
 
 chosts_by_role() {
@@ -134,4 +141,12 @@ lastoffset(){
 
 ksearch() {
     knife search node $1 -a ec2.placement_availability_zone -a ec2.instance_type -a tags -a roles -a uptime_in_seconds
+}
+
+jctl() {
+    sudo journalctl -u $@
+}
+
+sctl() {
+    sudo systemctl $@
 }
