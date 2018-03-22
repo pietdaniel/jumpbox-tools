@@ -51,7 +51,7 @@ prefix_with_i() {
 
 ji(){
     _node_to_use=$1
-    if [[ "$1" =~ ^i- ]]; then
+    if [[ ! "$1" =~ ^i- ]]; then
         _node_to_use="i-$1"
     fi
     deploytools $_node_to_use
