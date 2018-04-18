@@ -46,13 +46,29 @@ jr(){
     ssh -A $IP
 }
 
-prefix_with_i() {
+function valid_ip(){
+    local  ip=$1
+    local  stat=1
+
+    if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+        OIFS=$IFS
+        IFS='.'
+        ip=($ip)
+        IFS=$OIFS
+        [[ ${ip[0]} -le 255 && ${ip[1]} -le 255 && ${ip[2]} -le 255 && ${ip[3]} -le 255 ]]
+        stat=$?
+    fi
+    return $stat
 }
 
 ji(){
     _node_to_use=$1
     if [[ ! "$1" =~ ^i- ]]; then
-        _node_to_use="i-$1"
+		if valid_ip $1; then
+			_node_to_use="$1"
+		else
+			_node_to_use="i-$1"
+		fi
     fi
     deploytools $_node_to_use
     ssh -A $_node_to_use
