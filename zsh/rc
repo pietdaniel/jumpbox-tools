@@ -28,3 +28,4 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
 export EDITOR=vim
+export KNIFE_HOME=/etc/chef
