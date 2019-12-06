@@ -78,7 +78,7 @@ chosts_by_role() {
 }
 
 pg() {
-    sudo -u postgres psql -p 5433 dogdata$(environmentlc)
+    sudo -u postgres dog -p 5433 dogdata$(environmentlc)
 }
 
 # Thanks @miketheman

@@ -34,3 +34,6 @@ rmlink htoprc ~/.config/htop/htoprc
 
 # vim
 rmlink vim/vimrc ~/.vimrc
+
+#postgres
+rmlink pg/psqlrc ~/.psqlrc
